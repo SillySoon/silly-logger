@@ -11,7 +11,10 @@
     "silly-logger",
     "silly"
   ],
-  "author": "SillySoon",
+  "author": "SillySoon <silly@sillysoon.de> (https://sillysoon.de)",
+  "contributors": [
+    "EckigerLuca <luca@eckigerluca.com> (https://eckigerluca.com)"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
