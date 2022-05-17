@@ -84,4 +84,4 @@ logger.custom('magenta', 'magenta', 'magenta');
 logger.custom('dark_magenta', 'dark_magenta', 'dark_magenta');
 ```
 
-Image will be here pretty soon™
+<img src="https://i.ibb.co/q0BQNqx/grafik.png" alt="Silly-Logger">
