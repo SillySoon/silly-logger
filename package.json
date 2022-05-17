@@ -1,6 +1,6 @@
 {
   "name": "silly-logger",
-  "version": "1.1.4",
+  "version": "1.1.4-1",
   "description": "a logger library to make your console fancy",
   "main": "index.js",
   "keywords": [
