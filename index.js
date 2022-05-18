@@ -1,6 +1,7 @@
 // import dependencies
 const moment = require('moment');
 const chalk = require('chalk');
+const util = require('node:util');
 
 // set timeFormat
 // TODO: Customizeable?
@@ -31,74 +32,80 @@ const logger = {
   // Info - Some casual Information to log
   info: function(text) {
     const time = moment().format(timeFormat);
-    process.stdout.write(chalk.gray(`${time} [${chalk.cyan('INFO')}]: `) + text + '\n');
+    process.stdout.write(chalk.gray(`${time} [${chalk.cyan('INFO')}]: `) + util.formatWithOptions({ colors: true }, text) + '\n');
   },
   // Success - to show something correctly worked
   success: function(text) {
     const time = moment().format(timeFormat);
-    process.stdout.write(chalk.gray(`${time} [${chalk.green('SUCCESS')}]: `) + text + '\n');
+    process.stdout.write(chalk.gray(`${time} [${chalk.green('SUCCESS')}]: `) + util.formatWithOptions({ colors: true }, text) + '\n');
   },
   // Error - If some Errors appear
   error: function(text) {
     const time = moment().format(timeFormat);
-    process.stderr.write(chalk.gray(`${time} [${chalk.red('ERROR')}]: `) + chalk.red(text) + '\n');
+    process.stderr.write(chalk.gray(`${time} [${chalk.red('ERROR')}]: `) + chalk.red(util.formatWithOptions({ colors: true }, text)) + '\n');
   },
   // Warn - Simple warnings
   warn: function(text) {
     const time = moment().format(timeFormat);
-    process.stderr.write(chalk.gray(`${time} [${chalk.yellow('WARN')}]: `) + text + '\n');
+    process.stderr.write(chalk.gray(`${time} [${chalk.yellow('WARN')}]: `) + util.formatWithOptions({ colors: true }, text) + '\n');
   },
   // Crash - If something Crashes
   crash: function(text) {
     const time = moment().format(timeFormat);
-    process.stderr.write(chalk.gray(`${time} [${chalk.red('CRASH')}]: `) + text + '\n');
+    process.stderr.write(chalk.gray(`${time} [${chalk.red('CRASH')}]: `) + util.formatWithOptions({ colors: true }, text) + '\n');
   },
   // Debug- For general Console output thats considerable "debugging"
   debug: function(text) {
       const time = moment().format(timeFormat);
-      process.stderr.write(chalk.gray(`${time} [${chalk.yellow('DEBUG')}]: `) + text + '\n');
+      process.stderr.write(chalk.gray(`${time} [${chalk.yellow('DEBUG')}]: `) + util.formatWithOptions({ colors: true }, text) + '\n');
   },
   // Startup - to log some Starting functions
   startup: function(text) {
     const time = moment().format(timeFormat);
-    process.stderr.write(chalk.gray(`${time} [${chalk.cyan('STARTUP')}]: `) + text + '\n');
+    process.stderr.write(chalk.gray(`${time} [${chalk.cyan('STARTUP')}]: `) + util.formatWithOptions({ colors: true }, text) + '\n');
   },
   // Deploy - For exaple command deploying
   deploy: function(text) {
     const time = moment().format(timeFormat);
-    process.stderr.write(chalk.gray(`${time} [${chalk.cyan('DEPLOY')}]: `) + text + '\n');
+    process.stderr.write(chalk.gray(`${time} [${chalk.cyan('DEPLOY')}]: `) + util.formatWithOptions({ colors: true }, text) + '\n');
   },
   // Custom - to create Custom Variants
   custom: function(prefix, color, textcolor, text) {
     const time = moment().format(timeFormat);
 
-    if (prefix == "") { // If Prefix is not defined, cancel and log error
+    if (prefix == "") {
+      // If Prefix is not defined, cancel and log error
       logger.error("prefix not defined.");
       return;
     }
 
-    if (textcolor.startsWith('#')) { // Checks if TextColor starts with #
-      text = `${chalk.hex(textcolor)(text)}`
-    } else if (textcolor in colors) { // if not, search in predefined colors
-      if (String(colors[color]).startsWith('#')) {
-        text = `${chalk.hex(colors[textcolor])(text)}`;
+    if (textcolor.startsWith('#')) {
+      // Checks if TextColor is a hex color
+      text = `${chalk.hex(textcolor)(util.formatWithOptions({ colors: true }, text))}`;
+    } else if (textcolor in colors) {
+      // if not, check if input matches defined colors
+      if (String(colors[textcolor]).startsWith('#')) {
+        text = `${chalk.hex(colors[textcolor])(util.formatWithOptions({ colors: true }, text))}`;
       } else {
         const chalkColor = colors[textcolor];
-        text = `${chalkColor(text)}`;
+        text = `${chalkColor(util.formatWithOptions({ colors: true }, text))}`;
       }
     }
 
-    if (color.startsWith('#')) { // Checks if Color starts with #
-      process.stderr.write(chalk.gray(`${time} [${chalk.hex(color)(`${prefix}`)}]: `) + text + '\n');
-    } else if (color in colors) { // if not, search in predefined colors
+    if (color.startsWith('#')) {
+      // Checks if Color from list is a hex color
+      process.stderr.write(chalk.gray(`${time} [${chalk.hex(color)(`${prefix}`)}]: `) + util.formatWithOptions({ colors: true }, text) + '\n');
+    } else if (color in colors) {
+      // if not, check if input matches defined colors
       if (String(colors[color]).startsWith('#')) {
-        process.stderr.write(chalk.gray(`${time} [${chalk.hex(colors[color])(`${prefix}`)}]: `) + text + '\n');
+        process.stderr.write(chalk.gray(`${time} [${chalk.hex(colors[color])(`${prefix}`)}]: `) + util.formatWithOptions({ colors: true }, text) + '\n');
       } else {
         const chalkColor = colors[color];
-        process.stderr.write(chalk.gray(`${time} [${chalkColor(`${prefix}`)}]: `) + text + '\n');
+        process.stderr.write(chalk.gray(`${time} [${chalkColor(`${prefix}`)}]: `) + util.formatWithOptions({ colors: true }, text) + '\n');
       }
-    } else { // If nothing in colors write in Grey
-      process.stderr.write(chalk.gray(`${time} [${prefix}]: `) + text + '\n');
+    } else {
+      // If nothing matches, color is grey
+      process.stderr.write(chalk.gray(`${time} [${prefix}]: `) + util.formatWithOptions({ colors: true }, text) + '\n');
     }
   },
 };
