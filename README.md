@@ -5,7 +5,7 @@
 ---
 
 Silly-logger is a small project of mine. It's useful to make your console look pretty with a great variety and customizability of logging functions.
-<br><br>
+<br>
 I'm actively working on the pack so expect to update the package more often in the starting time, tho major features are already in it, some minor ones will be added frequently.
 
  
