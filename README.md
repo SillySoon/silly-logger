@@ -45,9 +45,9 @@ logger.deploy("Deployed Command");
 const logger = require('silly-logger');
 
 // Custom Logger Messages with hex code
-logger.custom("WONDERFUL", "#ffffff", "Some Message here");
-logger.custom("LOL", "#F5A9F2", "That's so funny");
-logger.custom("DARLING", "#618FB1", "A wunderful DC-Bot for everyone");
+logger.custom('WONDERFUL', '#ffffff', "Some Message here");
+logger.custom('LOL', '#F5A9F2', "That's so funny");
+logger.custom('DARLING', '#618FB1', "A wunderful DC-Bot for everyone");
 
 ```
 <img src="https://i.ibb.co/S679Jnb/grafik.png" alt="Silly-Logger">
@@ -56,23 +56,37 @@ logger.custom("DARLING", "#618FB1", "A wunderful DC-Bot for everyone");
 ```js
 const logger = require('silly-logger');
 
+// logger.custom('PREFIX', 'COLOR', 'TEXTCOLOR', "TEXT")
+
 // Custom Logger Messages with color
-logger.custom('red', 'red', 'red');
-logger.custom('orange', 'orange', 'orange');
-logger.custom('gold', 'gold', 'gold');
-logger.custom('yellow', 'yellow', 'yellow');
-logger.custom('green', 'green', 'green');
-logger.custom('dark_green', 'dark_green', 'dark_green');
-logger.custom('teal', 'teal', 'teal');
-logger.custom('cyan', 'cyan', 'cyan');
-logger.custom('light_blue', 'light_blue', 'light_blue');
-logger.custom('blue', 'blue', 'blue');
-logger.custom('dark_blue', 'dark_blue', 'dark_blue');
-logger.custom('blurple', 'blurple', 'blurple');
-logger.custom('purple', 'purple', 'purple');
-logger.custom('fuchsia', 'fuchsia', 'fuchsia');
-logger.custom('magenta', 'magenta', 'magenta');
-logger.custom('dark_magenta', 'dark_magenta', 'dark_magenta');
+logger.custom('red', 'red', 'red', "red");
+logger.custom('orange', 'orange', 'orange',"orange");
+logger.custom('gold', 'gold', 'gold', "gold");
+logger.custom('yellow', 'yellow', 'yellow', "yellow");
+logger.custom('green', 'green', 'green', "green");
+logger.custom('dark_green', 'dark_green', 'dark_green', "dark_green");
+logger.custom('teal', 'teal', 'teal', "teal");
+logger.custom('cyan', 'cyan', 'cyan', "cyan");
+logger.custom('light_blue', 'light_blue', 'light_blue', "light_blue");
+logger.custom('blue', 'blue', 'blue', "blue");
+logger.custom('dark_blue', 'dark_blue', 'dark_blue', "dark_blue");
+logger.custom('blurple', 'blurple', 'blurple', "blurple");
+logger.custom('purple', 'purple', 'purple', "purple");
+logger.custom('fuchsia', 'fuchsia', 'fuchsia', "fuchsia");
+logger.custom('magenta', 'magenta', 'magenta', "magenta");
+logger.custom('dark_magenta', 'dark_magenta', 'dark_magenta', "dark_magenta");
 ```
 
 <img src="https://i.ibb.co/q0BQNqx/grafik.png" alt="Silly-Logger">
+
+## Version Explenation
+
+**Example Version: v1.2.3**
+- **1 = Project Stage**
+Currently, no Plans for this Number.
+
+- **2 = Major Update**
+Major updates are Updates where the code majorly changes, so you as a consumer have to check the functionality of your program while using this package.
+
+- **3 = Minor Update**
+Minor updates just updates little stuff, so there are no necessary but nice to have. Here will be no changes for functions or else.
