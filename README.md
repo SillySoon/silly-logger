@@ -3,7 +3,7 @@
 <a href="https://www.npmjs.com/package/silly-logger" target="_blank"> ![](https://img.shields.io/npm/v/silly-logger?label=Version&style=for-the-badge&color=2cabf4&labelColor=3eb5f9) ![](https://img.shields.io/npm/dt/silly-logger?style=for-the-badge&labelColor=27f164&color=10e851)</a> <a href="https://github.com/SillySoon/silly-logger/blob/main/LICENSE" target="_blank"> ![](https://img.shields.io/npm/l/silly-logger?style=for-the-badge&color=c759e5&labelColor=ca64e7) </a> <a href="https://github.com/SillySoon" target="_blank"> ![](https://img.shields.io/github/followers/sillysoon?labelColor=d2d1d1&color=2f2f2f&logo=github&logoColor=2f2f2f&style=for-the-badge)</a>
 
 ---
-
+c
 Silly-logger is a small project of mine. It's useful to make your console look pretty with a great variety and customizability of logging functions.
 <br>
 I'm actively working on the pack so expect to update the package more often in the starting time, tho major features are already in it, some minor ones will be added frequently.
@@ -22,7 +22,7 @@ $ npm install silly-logger
 - Actively Maintained
 
 
-## Usage
+## Usage - Logging Simple Stuff
 
 ```js
 const logger = require('silly-logger');
@@ -37,20 +37,22 @@ logger.debug("I like Llamas");
 logger.startup("Program starting");
 logger.deploy("Deployed Command");
 ```
-<img src="https://i.ibb.co/DRVq6L4/grafik.png" alt="Silly-Logger">
+<img src="https://i.ibb.co/MNNkQtN/grafik.png" alt="Silly-Logger">
 
 ## Custom Logger Message (Hex Code)
 
 ```js
 const logger = require('silly-logger');
 
+// logger.custom('PREFIX', 'COLOR', 'TEXTCOLOR', "TEXT")
+
 // Custom Logger Messages with hex code
-logger.custom('WONDERFUL', '#ffffff', "Some Message here");
-logger.custom('LOL', '#F5A9F2', "That's so funny");
-logger.custom('DARLING', '#618FB1', "A wunderful DC-Bot for everyone");
+logger.custom('WONDERFUL', '#ffffff', '#F5A9F2',"Some Message here");
+logger.custom('LOL', '#F5A9F2', '#618FB1',"That's so funny");
+logger.custom('DARLING', '#618FB1', '#ffffff',"A wunderful DC-Bot for everyone");
 
 ```
-<img src="https://i.ibb.co/S679Jnb/grafik.png" alt="Silly-Logger">
+<img src="https://i.ibb.co/jgq07QX/grafik.png" alt="Silly-Logger">
 
 ## Custom Logger Message (Colors)
 ```js
@@ -77,7 +79,7 @@ logger.custom('magenta', 'magenta', 'magenta', "magenta");
 logger.custom('dark_magenta', 'dark_magenta', 'dark_magenta', "dark_magenta");
 ```
 
-<img src="https://i.ibb.co/q0BQNqx/grafik.png" alt="Silly-Logger">
+<img src="https://i.ibb.co/yBHBTBW/grafik.png" alt="Silly-Logger">
 
 ## Version Explenation
 
