@@ -1,6 +1,6 @@
 {
   "name": "silly-logger",
-  "version": "1.2.2",
+  "version": "1.2.4",
   "description": "a logger library to make your console fancy",
   "main": "index.js",
   "keywords": [
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "chalk": "4.1.2",
-    "moment": "^2.29.3"
+    "moment": "^2.29.4"
   },
   "devDependencies": {
     "eslint": "^8.7.0"

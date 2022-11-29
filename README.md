@@ -3,7 +3,6 @@
 <a href="https://www.npmjs.com/package/silly-logger" target="_blank"> ![](https://img.shields.io/npm/v/silly-logger?label=Version&style=for-the-badge&color=2cabf4&labelColor=3eb5f9) ![](https://img.shields.io/npm/dt/silly-logger?style=for-the-badge&labelColor=27f164&color=10e851)</a> <a href="https://github.com/SillySoon/silly-logger/blob/main/LICENSE" target="_blank"> ![](https://img.shields.io/npm/l/silly-logger?style=for-the-badge&color=c759e5&labelColor=ca64e7) </a> <a href="https://github.com/SillySoon" target="_blank"> ![](https://img.shields.io/github/followers/sillysoon?labelColor=d2d1d1&color=2f2f2f&logo=github&logoColor=2f2f2f&style=for-the-badge)</a>
 
 ---
-c
 Silly-logger is a small project of mine. It's useful to make your console look pretty with a great variety and customizability of logging functions.
 <br>
 I'm actively working on the pack so expect to update the package more often in the starting time, tho major features are already in it, some minor ones will be added frequently.
