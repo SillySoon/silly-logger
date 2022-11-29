@@ -52,18 +52,20 @@ function loggerConstructer(prefixInput, prefixColor, textColor, textInput) {
   }
 
   if (prefixColor.startsWith('#')) {
-    //  checks if Color from list is a hex color
+    //  checks if Color from list is a hex color NOTE: OUTPUT
     process.stderr.write(chalk.gray(`${time} [${chalk.hex(prefixColor)(`${prefixInput}`)}]: `) + util.formatWithOptions({ colors: true }, textInput) + '\n');
   } else if (prefixColor in colors) {
     //  if not, check if input matches defined colors
     if (String(colors[prefixColor]).startsWith('#')) {
+      //  NOTE: OUTPUT
       process.stderr.write(chalk.gray(`${time} [${chalk.hex(colors[prefixColor])(`${prefixInput}`)}]: `) + util.formatWithOptions({ colors: true }, textInput) + '\n');
     } else {
+      //  NOTE: OUTPUT
       const chalkColor = colors[prefixColor];
       process.stderr.write(chalk.gray(`${time} [${chalkColor(`${prefixInput}`)}]: `) + util.formatWithOptions({ colors: true }, textInput) + '\n');
     }
   } else {
-    //  If nothing matches, color is grey
+    //  If nothing matches, color is grey NOTE: OUTPUT
     process.stderr.write(chalk.gray(`${time} [${prefixInput}]: `) + util.formatWithOptions({ colors: true }, textInput) + '\n');
   }
 }
@@ -100,7 +102,7 @@ const logger = {
   },
   //  Deploy - For exaple command deploying
   deploy: function(text) {
-    loggerConstructer('STARTUP', 'cyan', 'grey', text);
+    loggerConstructer('DEPLOY', 'cyan', 'grey', text);
   },
   //  Custom - to create Custom Variants
   custom: function(prefixInput, prefixColor, textColor, textInput) {
