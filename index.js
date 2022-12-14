@@ -1,7 +1,7 @@
 //  import dependencies
 const moment = require('moment');
 const chalk = require('chalk');
-const util = require('node:util');
+const util = require('util');
 
 
 //  set timeFormat TODO: Customizeable?
