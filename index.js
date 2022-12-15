@@ -3,9 +3,8 @@ const moment = require('moment');
 const chalk = require('chalk');
 const util = require('node:util');
 
-const logger = require('silly-logger');
 
-//  set timeFormat TODO: Customizeable?
+//  customizeable timeFormat (globally)
 let timeFormat = "YYYY-MM-DD HH:mm:ss:SS";
 
 //  predefine colors
