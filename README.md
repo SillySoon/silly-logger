@@ -7,7 +7,19 @@ Silly-logger is a small project of mine. It's useful to make your console look p
 <br>
 I'm actively working on the pack so expect to update the package more often in the starting time, tho major features are already in it, some minor ones will be added frequently.
 
+## Table of Contents
+
+- [Install](#install)
+- [Highlights](#highlights)
+- **Usage**
+  - [Simple Presets](#usage---logging-simple-stuff)
+  - [Custom - Hex Code](#custom-logger-message-hex-code)
+  - [Custom - Colors](#custom-logger-message-colors)
+- **Customization**
+  - [timeFormat](#timeformat)
+- [Version explenation](#version-explenation)
  
+
 ## Install
 
 ```consoles
@@ -36,7 +48,7 @@ logger.debug("I like Llamas");
 logger.startup("Program starting");
 logger.deploy("Deployed Command");
 ```
-<img src="https://i.ibb.co/MNNkQtN/grafik.png" alt="Silly-Logger">
+<img src="https://i.ibb.co/ykT32WZ/Presets.png" alt="Silly-Logger">
 
 ## Custom Logger Message (Hex Code)
 
@@ -51,7 +63,7 @@ logger.custom('LOL', '#F5A9F2', '#618FB1',"That's so funny");
 logger.custom('DARLING', '#618FB1', '#ffffff',"A wunderful DC-Bot for everyone");
 
 ```
-<img src="https://i.ibb.co/jgq07QX/grafik.png" alt="Silly-Logger">
+<img src="https://i.ibb.co/dWv2NpL/Custom.png" alt="Silly-Logger">
 
 ## Custom Logger Message (Colors)
 ```js
@@ -78,7 +90,27 @@ logger.custom('magenta', 'magenta', 'magenta', "magenta");
 logger.custom('dark_magenta', 'dark_magenta', 'dark_magenta', "dark_magenta");
 ```
 
-<img src="https://i.ibb.co/yBHBTBW/grafik.png" alt="Silly-Logger">
+<img src="https://i.ibb.co/JsZHY4h/Colors.png" alt="Silly-Logger">
+
+## timeFormat
+
+```js
+const logger = require('silly-logger');
+
+// logger.timeFormat('STRING');
+
+//  Change the Format of the Date globally (https://momentjs.com/)
+logger.timeFormat('DD-MM-YYYY');
+logger.info('Testing DD-MM-YYYY');
+
+logger.timeFormat('h-mm-ss a');
+logger.info('Testing h-mm-ss a');
+
+logger.timeFormat("MMM Do YY - h:mm:ss a");
+logger.info('Testing MMM Do YY - h:mm:ss a');
+```
+
+<img src="https://i.ibb.co/ZJ7Jvbb/time-Format.png" alt="Silly-Logger">
 
 ## Version Explenation
 

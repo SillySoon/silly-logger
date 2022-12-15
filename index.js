@@ -4,8 +4,8 @@ const chalk = require('chalk');
 const util = require('util');
 
 
-//  set timeFormat TODO: Customizeable?
-const timeFormat = "YYYY-MM-DD HH:mm:ss:SS";
+//  customizeable timeFormat (globally)
+let timeFormat = "YYYY-MM-DD HH:mm:ss:SS";
 
 //  predefine colors
 const colors = {
@@ -53,25 +53,29 @@ function loggerConstructer(prefixInput, prefixColor, textColor, textInput) {
 
   if (prefixColor.startsWith('#')) {
     //  checks if Color from list is a hex color NOTE: OUTPUT
-    process.stderr.write(chalk.gray(`${time} [${chalk.hex(prefixColor)(`${prefixInput}`)}]: `) + util.formatWithOptions({ colors: true }, textInput) + '\n');
+    process.stderr.write(chalk.gray(`${chalk.hex(prefixColor)(`┃`)} ${time} [${chalk.hex(prefixColor)(`${prefixInput}`)}]: `) + util.formatWithOptions({ colors: true }, textInput) + '\n');
   } else if (prefixColor in colors) {
     //  if not, check if input matches defined colors
     if (String(colors[prefixColor]).startsWith('#')) {
       //  NOTE: OUTPUT
-      process.stderr.write(chalk.gray(`${time} [${chalk.hex(colors[prefixColor])(`${prefixInput}`)}]: `) + util.formatWithOptions({ colors: true }, textInput) + '\n');
+      process.stderr.write(chalk.gray(`${chalk.hex(colors[prefixColor])(`┃`)} ${time} [${chalk.hex(colors[prefixColor])(`${prefixInput}`)}]: `) + util.formatWithOptions({ colors: true }, textInput) + '\n');
     } else {
       //  NOTE: OUTPUT
       const chalkColor = colors[prefixColor];
-      process.stderr.write(chalk.gray(`${time} [${chalkColor(`${prefixInput}`)}]: `) + util.formatWithOptions({ colors: true }, textInput) + '\n');
+      process.stderr.write(chalk.gray(`${chalkColor(`┃`)} ${time} [${chalkColor(`${prefixInput}`)}]: `) + util.formatWithOptions({ colors: true }, textInput) + '\n');
     }
   } else {
     //  If nothing matches, color is grey NOTE: OUTPUT
-    process.stderr.write(chalk.gray(`${time} [${prefixInput}]: `) + util.formatWithOptions({ colors: true }, textInput) + '\n');
+    process.stderr.write(chalk.gray(`┃${time} [${prefixInput}]: `) + util.formatWithOptions({ colors: true }, textInput) + '\n');
   }
 }
 
 //  logger Functions
 const logger = {
+  //  timeFormat - changes the Time format
+  timeFormat: function(string) {
+    timeFormat = string;
+  },
   //  Info - Some casual Information to log
   info: function(text) {
     loggerConstructer('INFO', 'cyan', 'grey', text);
