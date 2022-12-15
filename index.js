@@ -37,32 +37,39 @@ function loggerConstructer(prefixInput, prefixColor, textColor, textInput) {
   //  get current time
   const time = moment().format(timeFormat);
 
+  /* PREFIX COLOR */
+
   //  if prefix is not defined, cancel and log error
   if (prefixInput == "") {
     logger.error("prefix not defined.");
     return;
   }
 
-  //  checks if TextColor is a hex color
-  if (textColor.startsWith('#'))
-  {
+  /* TEXT COLOR */
+
+  //  checks if TextColor is a hex color (true = sets color)
+  if (textColor.startsWith('#')) {
     textInput = `${chalk.hex(textColor)(util.formatWithOptions({ colors: true }, textInput))}`;
   }
 
-  //  if not, check if input matches defined colors
+  //  if not, check if input matches defined colors (false = checks predefined colors)
   else if (textColor in colors) {
 
+    //  if predefined color begins with # set it to the hexcode
     if (String(colors[textColor]).startsWith('#')) {
       textInput = `${chalk.hex(colors[textColor])(util.formatWithOptions({ colors: true }, textInput))}`;
     }
 
+    //  if predefined color is not a hex color, use chalk's color sheme (e.g. chalk.red();)
     else {
       const chalkColor = colors[textColor];
       textInput = `${chalkColor(util.formatWithOptions({ colors: true }, textInput))}`;
     }
   }
 
-  //  checks if Color from list is a hex color NOTE: OUTPUT
+  /* PREFIX COLOR */
+
+  //  checks if prefixColor from list is a hex color NOTE: OUTPUT
   if (prefixColor.startsWith('#')) {
     process.stderr.write(chalk.gray(`${chalk.hex(prefixColor)(`┃`)} ${time} [${chalk.hex(prefixColor)(`${prefixInput}`)}]: `) + util.formatWithOptions({ colors: true }, textInput) + '\n');
   }
@@ -82,6 +89,8 @@ function loggerConstructer(prefixInput, prefixColor, textColor, textInput) {
     }
   }
 
+  /* NO MATCH */
+
   //  If nothing matches, color is grey NOTE: OUTPUT
   else {
     process.stderr.write(chalk.gray(`┃${time} [${prefixInput}]: `) + util.formatWithOptions({ colors: true }, textInput) + '\n');
@@ -91,7 +100,7 @@ function loggerConstructer(prefixInput, prefixColor, textColor, textInput) {
 //  logger Functions
 const logger = {
 
-  //  timeFormat - changes the Time format
+  //  timeFormat - changes the Time format (globally)
   timeFormat: function(string) {
     timeFormat = string;
   },
