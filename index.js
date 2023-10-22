@@ -7,6 +7,14 @@ const util = require('util');
 //  customizeable timeFormat (globally)
 let timeFormat = "YYYY-MM-DD HH:mm:ss:SS";
 
+/* Logging to file */
+// enable log files (globally)
+let enableLogFiles = false;
+// log folder
+let logFolderPath = null;
+// latest.log clean
+let latestFileClean = false;
+
 //  predefine colors
 const colors = {
   red: chalk.red,
@@ -26,6 +34,9 @@ const colors = {
   magenta: chalk.magenta,
   dark_magenta: "#AD1457",
 };
+
+//  get current date and time
+const sessionDateTime = moment().format('YYYY-MM-DD_hh-mm-ss');
 
 //  constructor for all logger functions TODO: Support for Objects TODO: More Line input
 function loggerConstructer(prefixInput, prefixColor, textColor, textInput) {
@@ -68,6 +79,39 @@ function loggerConstructer(prefixInput, prefixColor, textColor, textInput) {
     //  If nothing matches, color is grey NOTE: OUTPUT
     process.stderr.write(chalk.gray(`┃${time} [${prefixInput}]: `) + util.formatWithOptions({ colors: true }, textInput) + '\n');
   }
+
+  if (enableLogFiles) {
+	// if logfiles are enabled, create log file for each session and latest.log
+	if (!logFolderPath) {
+	  // if logFolderPath is not defined, cancel and print error. Disabling log files.
+	  enableLogFiles = false;
+	  logger.error("logFolderPath not defined. Disabling log files.");
+	  return;
+	}
+	const fs = require('fs');
+	const path = require('path');
+	const logFile = path.join(logFolderPath, `${sessionDateTime}.log`);
+	const latestFile = path.join(logFolderPath, 'latest.log');
+
+	const regex = /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g;
+	textInput = textInput.replace(regex, '');
+
+	// create logFile and write to it / append to it if it exists
+	if (fs.existsSync(logFile)) {
+	  fs.appendFileSync(logFile, `${time} [${prefixInput}]: ` + util.formatWithOptions({ colors: false }, textInput) + '\n');
+	} else {
+	  fs.writeFileSync(logFile, `${time} [${prefixInput}]: ` + util.formatWithOptions({ colors: false }, textInput) + '\n');
+	}
+
+	// create latestFile / clear it if it exists
+	if (!fs.existsSync(latestFile) || !latestFileClean) {
+	  fs.writeFileSync(latestFile, '');
+	  latestFileClean = true;
+	}
+
+	// append to latestFile
+	fs.appendFileSync(latestFile, `${time} [${prefixInput}]: ` + util.formatWithOptions({ colors: false }, textInput) + '\n');
+  }
 }
 
 //  logger Functions
@@ -75,6 +119,14 @@ const logger = {
   //  timeFormat - changes the Time format
   timeFormat: function(string) {
     timeFormat = string;
+  },
+  //  enableLogFiles - enables Logfiles
+  enableLogFiles: function(boolean) {
+	enableLogFiles = boolean;
+  },
+  //  logFolderPath - changes the Logfolder Path
+  logFolderPath: function(string) {
+	logFolderPath = string;
   },
   //  Info - Some casual Information to log
   info: function(text) {

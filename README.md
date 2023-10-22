@@ -17,6 +17,7 @@ I'm actively working on the pack so expect to update the package more often in t
   - [Custom - Colors](#custom-logger-message-colors)
 - **Customization**
   - [timeFormat](#timeformat)
+- **[Log to files](#log-to-files)**
 - [Version explenation](#version-explenation)
  
 
@@ -111,6 +112,18 @@ logger.info('Testing MMM Do YY - h:mm:ss a');
 ```
 
 <img src="https://i.ibb.co/ZJ7Jvbb/time-Format.png" alt="Silly-Logger">
+
+## Log to files
+Create a folder for your logs. Enable the function and set the path, <span style="color: red;">BEFORE</span> you use the logger!
+```js
+const logger = require('silly-logger');
+
+// logger.enableLogFiles(true/false);
+logger.enableLogFiles(true);
+
+// logger.logFolderPath('PATH');
+logger.logFolderPath('./logs');
+```
 
 ## Version Explenation
 
