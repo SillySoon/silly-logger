@@ -38,6 +38,8 @@ $ npm install silly-logger
 
 ```js
 const logger = require('silly-logger');
+// or
+import * as logger from 'silly-logger';
 
 // Logger presets
 logger.info("Nice Information here");
@@ -55,6 +57,8 @@ logger.deploy("Deployed Command");
 
 ```js
 const logger = require('silly-logger');
+//or
+import * as logger from 'silly-logger';
 
 // logger.custom('PREFIX', 'COLOR', 'TEXTCOLOR', "TEXT")
 
@@ -69,6 +73,8 @@ logger.custom('DARLING', '#618FB1', '#ffffff',"A wunderful DC-Bot for everyone")
 ## Custom Logger Message (Colors)
 ```js
 const logger = require('silly-logger');
+//or
+import * as logger from 'silly-logger';
 
 // logger.custom('PREFIX', 'COLOR', 'TEXTCOLOR', "TEXT")
 
@@ -97,6 +103,8 @@ logger.custom('dark_magenta', 'dark_magenta', 'dark_magenta', "dark_magenta");
 
 ```js
 const logger = require('silly-logger');
+//or
+import * as logger from 'silly-logger';
 
 // logger.timeFormat('STRING');
 
@@ -117,6 +125,8 @@ logger.info('Testing MMM Do YY - h:mm:ss a');
 Create a folder for your logs. Enable the function and set the path, <span style="color: red;">BEFORE</span> you use the logger!
 ```js
 const logger = require('silly-logger');
+//or
+import * as logger from 'silly-logger';
 
 // logger.enableLogFiles(true/false);
 logger.enableLogFiles(true);
